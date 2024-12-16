@@ -550,8 +550,8 @@ endif
 hdoc = find_program('hdoc', required: false)
 
 conf_data = configuration_data()
-conf_data.set('source_root', meson.source_root())
-conf_data.set('build_root', meson.build_root())
+conf_data.set('source_root', meson.project_source_root())
+conf_data.set('build_root',  meson.project_build_root())
 configure_file(input: 'scripts/hdoc.toml.in',
 	output: '.hdoc.toml', configuration: conf_data)
 

@@ -1,5 +1,10 @@
+.cache
+
 subprojects
 !subprojects/*.wrap
 *.xbstrap
 # editor configs:
 .vscode
+
+/build/
+/build-headers/
