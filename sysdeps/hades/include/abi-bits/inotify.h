@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/linux/inotify.h
+../../../../abis/mlibc/inotify.h

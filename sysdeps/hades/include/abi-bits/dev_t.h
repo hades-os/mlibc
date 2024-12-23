@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/mlibc/dev_t.h
+../../../../abis/mlibc/dev_t.h

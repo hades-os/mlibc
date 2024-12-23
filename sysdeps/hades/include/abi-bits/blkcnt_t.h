@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/mlibc/blkcnt_t.h
+../../../../abis/mlibc/blkcnt_t.h

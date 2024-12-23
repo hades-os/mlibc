@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/hades/termios.h
+../../../../abis/hades/termios.h

@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/hades/ino_t.h
+../../../../abis/hades/ino_t.h

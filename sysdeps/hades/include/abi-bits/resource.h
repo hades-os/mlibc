@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/mlibc/resource.h
+../../../../abis/mlibc/resource.h

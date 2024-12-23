@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/linux/fsfilcnt_t.h
+../../../../abis/linux/fsfilcnt_t.h

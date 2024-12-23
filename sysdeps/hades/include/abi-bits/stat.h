@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/mlibc/stat.h
+../../../../abis/mlibc/stat.h

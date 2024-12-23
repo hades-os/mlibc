@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/hades/wait.h
+../../../../abis/hades/wait.h

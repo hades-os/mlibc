@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/hades/pid_t.h
+../../../../abis/hades/pid_t.h

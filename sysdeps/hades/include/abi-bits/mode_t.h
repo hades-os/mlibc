@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/hades/mode_t.h
+../../../../abis/hades/mode_t.h

@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/hades/seek-whence.h
+../../../../abis/hades/seek-whence.h

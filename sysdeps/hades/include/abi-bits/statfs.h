@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/linux/statfs.h
+../../../../abis/linux/statfs.h

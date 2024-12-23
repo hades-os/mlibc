@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/linux/utsname.h
+../../../../abis/mlibc/utsname.h

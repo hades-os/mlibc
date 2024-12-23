@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/mlibc/epoll.h
+../../../../abis/mlibc/epoll.h

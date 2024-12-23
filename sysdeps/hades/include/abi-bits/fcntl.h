@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/mlibc/fcntl.h
+../../../../abis/mlibc/fcntl.h

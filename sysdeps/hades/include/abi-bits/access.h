@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/mlibc/access.h
+../../../../abis/mlibc/access.h

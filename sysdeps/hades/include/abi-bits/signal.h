@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/hades/signal.h
+../../../../abis/hades/signal.h

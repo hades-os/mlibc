@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/mlibc/time.h
+../../../../abis/mlibc/time.h

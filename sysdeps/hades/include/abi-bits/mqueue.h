@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/linux/mqueue.h
+../../../../abis/linux/mqueue.h

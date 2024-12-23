@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/linux/msg.h
+../../../../abis/linux/msg.h

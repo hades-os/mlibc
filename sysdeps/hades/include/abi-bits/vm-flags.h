@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/hades/vm-flags.h
+../../../../abis/hades/vm-flags.h

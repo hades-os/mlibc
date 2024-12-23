@@ -1,1 +1,1 @@
-/home/racemus/projects/hades/user/mlibc/abis/hades/nlink_t.h
+../../../../abis/hades/nlink_t.h
