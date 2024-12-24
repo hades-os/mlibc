@@ -25,6 +25,7 @@ if not no_headers
 		'include/abi-bits/signal.h',
 		'include/abi-bits/socket.h',
 		'include/abi-bits/termios.h',
+        'include/abi-bits/time.h',
 		'include/abi-bits/blkcnt_t.h',
 		'include/abi-bits/blksize_t.h',
 		'include/abi-bits/dev_t.h',
@@ -39,6 +40,7 @@ if not no_headers
 		'include/abi-bits/limits.h',
 		'include/abi-bits/utsname.h',
 		'include/abi-bits/ptrace.h',
+        'include/abi-bits/vt.h',
 		'include/abi-bits/poll.h',
 		'include/abi-bits/epoll.h',
 		'include/abi-bits/packet.h',
@@ -53,8 +55,6 @@ if not no_headers
 		'include/abi-bits/statfs.h',
 		'include/abi-bits/statvfs.h',
 		'include/abi-bits/ioctls.h',
-		'include/abi-bits/xattr.h',
-		'include/abi-bits/msg.h',
 		subdir: 'abi-bits',
         follow_symlinks: true
 	)
