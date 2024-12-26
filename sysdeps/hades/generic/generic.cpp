@@ -76,6 +76,10 @@ namespace mlibc {
         return 0;
     }
 
+    int sys_sleep(time_t *secs, long *nanos) {
+        return syscall(SYS_sleep, secs, nanos);
+    }
+
     int sys_vm_map(void *hint, size_t size, int prot, int flags, int fd, off_t offset, void **window) {
         uintptr_t addr = syscall(SYS_mmap, (uintptr_t) hint, size, prot, flags, fd, offset);
         if (int err = sc_error(addr); err) {

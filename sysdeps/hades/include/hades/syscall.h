@@ -52,6 +52,7 @@
 #define SYS_linkat 57
 
 #define SYS_user_log 58
+#define SYS_isatty 59
 
 extern "C" {
     using sc_word_t = long;

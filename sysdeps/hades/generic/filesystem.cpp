@@ -1,5 +1,7 @@
 #include <fcntl.h>
+#include <errno.h>
 #include <bits/ensure.h>
+#include <bits/winsize.h>
 #include <mlibc/all-sysdeps.hpp>
 #include <hades/syscall.h>
 #include <mlibc/debug.hpp>
@@ -79,6 +81,17 @@ namespace mlibc {
             return err;
         }
 
+        return 0;
+    }
+
+    int sys_isatty(int fd) {
+        struct winsize wsz;
+        auto res = syscall(SYS_ioctl, fd, TIOCGWINSZ, &wsz);
+        if (int err = sc_error(res); err) {
+            return err;
+        }
+
+        if (errno != EBADF) errno = ENOTTY;
         return 0;
     }
 }
