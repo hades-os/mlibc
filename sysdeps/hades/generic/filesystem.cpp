@@ -91,7 +91,6 @@ namespace mlibc {
             return err;
         }
 
-        if (errno != EBADF) errno = ENOTTY;
         return 0;
     }
 }
