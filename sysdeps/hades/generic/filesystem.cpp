@@ -88,9 +88,10 @@ namespace mlibc {
         struct winsize wsz;
         auto res = syscall(SYS_ioctl, fd, TIOCGWINSZ, &wsz);
         if (int err = sc_error(res); err) {
-            return err;
+            errno = ENOTTY;
+            return 0;
         }
 
-        return 0;
+        return 1;
     }
 }
