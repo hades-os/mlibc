@@ -42,6 +42,26 @@ namespace mlibc {
         return 0;
     }
 
+/*
+    int fd_number = r->rdi;
+    size_t req = r->rsi;
+    void *arg = (void *) r->rdx;
+
+*/
+
+    int sys_ioctl(int fd, unsigned long request, void *arg, int *result) {
+        auto res = syscall(SYS_ioctl, fd, request, arg);
+        if (int err = sc_error(res); err) {
+            return err;
+        }
+
+        if (res) {
+            *result = res;
+        }
+        
+        return 0;
+    }
+
     int sys_seek(int fd, off_t offset, int whence, off_t *new_offset) {
         auto res = syscall(SYS_seek, fd, offset, whence);
         if (int err = sc_error(res); err) {
@@ -85,13 +105,13 @@ namespace mlibc {
     }
 
     int sys_isatty(int fd) {
-        struct winsize wsz;
-        auto res = syscall(SYS_ioctl, fd, TIOCGWINSZ, &wsz);
-        if (int err = sc_error(res); err) {
-            errno = ENOTTY;
+        struct winsize ws;
+        int result;
+
+        if (!sys_ioctl(fd, TIOCGWINSZ, &ws, &result)) {
             return 0;
         }
 
-        return 1;
+        return ENOTTY;
     }
 }
