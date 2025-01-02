@@ -19,7 +19,7 @@
 #define SYS_getppid 15
 
 #define SYS_fcntl 16
-#define SYS_lstatat 17
+#define SYS_statat 17
 #define SYS_ioctl 18
 #define SYS_fork 19
 #define SYS_exec 20

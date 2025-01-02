@@ -61,9 +61,13 @@ if not no_headers
 
     install_headers(
 		'include/asm/ioctl.h',
-		'include/asm/ioctls.h',
 		subdir: 'asm',
 	)
+
+    install_headers(
+        'include/sys/ioctls.h',
+        subdir: 'sys'
+    )
 
 	install_headers(
 		'include/linux/fb.h',

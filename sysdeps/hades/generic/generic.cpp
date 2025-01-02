@@ -114,6 +114,24 @@ namespace mlibc {
         return sys_vm_unmap(pointer, size);
     }
 
+    int sys_getcwd(char *buffer, size_t size) {
+        auto res = syscall(SYS_chdir, buffer, size);
+        if (int err = sc_error(res); err) {
+            return err;
+        }
+
+        return 0;
+    }
+
+    int sys_chdir(const char *path) {
+        auto res = syscall(SYS_chdir, path);
+        if (int err = sc_error(res); err) {
+            return err;
+        }
+
+        return 0;
+    }
+
     pid_t sys_getpid() {
         return syscall(SYS_getpid);
     }
