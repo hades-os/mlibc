@@ -115,7 +115,7 @@ namespace mlibc {
     }
 
     int sys_getcwd(char *buffer, size_t size) {
-        auto res = syscall(SYS_chdir, buffer, size);
+        auto res = syscall(SYS_getcwd, buffer, size);
         if (int err = sc_error(res); err) {
             return err;
         }
@@ -141,19 +141,55 @@ namespace mlibc {
     }
 
     uid_t sys_getuid() {
+        return syscall(SYS_getuid);
+    }
+
+    int sys_setuid(uid_t uid) {
+        auto res = syscall(SYS_setuid, uid);
+        if (int err = sc_error(res); err) {
+            return err;
+        }
+
         return 0;
     }
 
     uid_t sys_geteuid() {
+        return syscall(SYS_geteuid);
+    }
+
+    int sys_seteuid(uid_t euid) {
+        auto res = syscall(SYS_seteuid, euid);
+        if (int err = sc_error(res); err) {
+            return err;
+        }
+
         return 0;
     }
 
     gid_t sys_getgid() {
-        return 0;
+        return syscall(SYS_getgid);
     }
 
     int sys_setgid(gid_t gid) {
-        return 0;
+        auto res = syscall(SYS_setgid, gid);
+         if (int err = sc_error(res); err) {
+            return err;
+        }
+
+        return 0;       
+    }
+
+    gid_t sys_getegid() {
+        return syscall(SYS_getegid);
+    }
+
+    int sys_setegid(gid_t egid) {
+        auto res = syscall(SYS_setegid, egid);
+        if (int err = sc_error(res); err) {
+            return err;
+        }
+
+        return 0;        
     }
 
     int sys_getsid(pid_t pid, pid_t *sid) {
@@ -163,12 +199,6 @@ namespace mlibc {
         }
 
         *sid = (pid_t) res;
-        return 0;
-    }
-
-    gid_t sys_getegid() {
-        mlibc::infoLogger() << "mlibc: " << __func__ << " is a stub!\n"
-                    << frg::endlog;
         return 0;
     }
 

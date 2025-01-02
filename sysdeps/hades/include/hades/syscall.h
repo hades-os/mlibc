@@ -52,7 +52,15 @@
 #define SYS_linkat 57
 
 #define SYS_user_log 58
-#define SYS_isatty 59
+
+#define SYS_getuid 59
+#define SYS_setuid 60
+#define SYS_geteuid 61
+#define SYS_seteuid 62
+#define SYS_getgid 63
+#define SYS_setgid 64
+#define SYS_getegid 65
+#define SYS_setegid 66
 
 extern "C" {
     using sc_word_t = long;
