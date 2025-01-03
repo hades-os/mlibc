@@ -100,9 +100,11 @@ namespace mlibc {
     }
 
     int sys_vm_protect(void *pointer, size_t size, int prot) {
-	    mlibc::infoLogger() << "mlibc: sys_vm_protect(" << pointer << ", "
-			    << size << ", " << prot << "); stub!\n"
-			    << frg::endlog;
+        uintptr_t addr = syscall(SYS_mprotect, (uintptr_t) pointer, size, prot);
+        if (int err = sc_error(addr); err) {
+            return err;
+        }
+
         return 0;
     }
 

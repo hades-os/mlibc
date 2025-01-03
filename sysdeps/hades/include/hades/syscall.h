@@ -9,6 +9,7 @@
 #define SYS_dup2 5
 #define SYS_mmap 6
 #define SYS_munmap 7
+#define SYS_mprotect 67
 
 #define SYS_set_fs_base 8
 #define SYS_set_gs_base 9
