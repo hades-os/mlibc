@@ -128,7 +128,11 @@ namespace mlibc {
 
     int sys_isatty(int fd) {
         struct termios attr;
-        return sys_tcgetattr(fd, &attr);
+        if (sys_tcgetattr(fd, &attr)) {
+            return ENOTTY;
+        }
+
+        return 0;
     }
 
     int sys_tcgetattr(int fd, struct termios *attr) {
