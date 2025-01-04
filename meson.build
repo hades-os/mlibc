@@ -449,12 +449,10 @@ if not headers_only
 		'-fno-stack-protector',
 		'-DMLIBC_BUILDING_RTLD',
 		'-Wno-extern-c-compat',
-        '-D_GNU_SOURCE',
 		'-Wno-unknown-pragmas',
 	]
 
 	libc_cpp_args = [
-        '-D_GNU_SOURCE',
 		'-Wno-unknown-pragmas',
 	]
 
