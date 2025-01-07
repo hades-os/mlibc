@@ -239,4 +239,23 @@ namespace mlibc {
         *nanos = res % 1000000000;
         return 0;
     }
+
+    int sys_gethostname(char *buffer, size_t bufsize) {
+        auto res = syscall(SYS_gethostname, buffer, bufsize);
+         if (int err = sc_error(res); err) {
+            return err;
+        }
+
+        return 0;       
+    }
+
+    int sys_sethostname(const char *buffer, size_t bufsize) {
+       auto res = syscall(SYS_sethostname, buffer, bufsize);
+         if (int err = sc_error(res); err) {
+            return err;
+        }
+
+        return 0;       
+
+    }
 }

@@ -63,6 +63,9 @@
 #define SYS_getegid 65
 #define SYS_setegid 66
 
+#define SYS_sethostname 68
+#define SYS_gethostname 69
+
 extern "C" {
     using sc_word_t = long;
     
