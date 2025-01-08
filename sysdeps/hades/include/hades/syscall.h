@@ -2,6 +2,7 @@
 #define HADES_SYSCALL_H
 
 #define SYS_openat 0
+#define SYS_accessat 70
 #define SYS_close 1
 #define SYS_read 2
 #define SYS_write 3

@@ -25,6 +25,19 @@ namespace mlibc {
         return sys_openat(AT_FDCWD, pathname, flags, mode, fd);
     }
 
+    int sys_faccessat(int dirfd, const char *pathname, int mode, int flags) {
+        auto res = syscall(SYS_accessat, dirfd, pathname, flags, mode);
+        if (int err = sc_error(res); err) {
+            return err;
+        }
+
+        return 0;
+    }
+
+    int sys_access(const char *path, int mode) {
+        return sys_faccessat(AT_FDCWD, path, mode, 0);
+    }
+
     int sys_read(int fd, void *buf, size_t count, ssize_t *bytes_read) {
         auto res = syscall(SYS_read, fd, buf, count);
         if (int err = sc_error(res); err) {
