@@ -66,6 +66,8 @@
 
 #define SYS_sethostname 68
 #define SYS_gethostname 69
+#define SYS_poll 71
+#define SYS_ppoll 72
 
 extern "C" {
     using sc_word_t = long;

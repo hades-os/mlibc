@@ -5,6 +5,9 @@
 #include <bits/winsize.h>
 #include <mlibc/all-sysdeps.hpp>
 #include <hades/syscall.h>
+
+#include <frg/vector.hpp>
+#include <mlibc/allocator.hpp>
 #include <mlibc/debug.hpp>
 #include <stdlib.h>
 
@@ -74,7 +77,7 @@ namespace mlibc {
         if (res) {
             *result = res;
         }
-        
+
         return 0;
     }
 
@@ -105,7 +108,7 @@ namespace mlibc {
         }
 
         return 0;
-    } 
+    }
 
     int sys_close(int fd) {
         auto res = syscall(SYS_close, fd);
@@ -171,7 +174,7 @@ namespace mlibc {
             return err;
         }
 
-        return 0;        
+        return 0;
     }
 
     int sys_fcntl(int fd, int request, va_list args, int *result) {
@@ -183,7 +186,7 @@ namespace mlibc {
         *result = res;
         return 0;
     }
-    
+
     int sys_mkdirat(int dirfd, const char *path, mode_t mode) {
         auto res = syscall(SYS_mkdirat, dirfd, path, mode);
         if (int err = sc_error(res); err) {
@@ -212,6 +215,78 @@ namespace mlibc {
         }
 
         *bytes_read = sizeof(dirent);
+        return 0;
+    }
+
+    int sys_poll(struct pollfd *fds, nfds_t count, int timeout, int *num_events) {
+        auto res = syscall(SYS_poll, fds, count, timeout);
+        if (int err = sc_error(res); err) {
+            return err;
+        }
+
+        if (res) {
+            *num_events = res;
+        }
+
+        return 0;
+    }
+
+    int sys_pselect(int num_fds, fd_set *read_set, fd_set *write_set, fd_set *except_set, const struct timespec *timeout, const sigset_t *sigmask, int *num_events) {
+        frg::vector<pollfd, MemoryAllocator> poll_data{getAllocator()};
+        for (int i = 0; i < num_fds; i++) {
+            struct pollfd poll_member = {};
+            poll_member.fd = i;
+            if(read_set) {
+                if(FD_ISSET(i, read_set)) {
+                    poll_member.events |= POLLIN;
+                }
+            }
+            if(write_set) {
+                if(FD_ISSET(i, write_set)) {
+                    poll_member.events |= POLLOUT;
+                }
+            }
+            if(except_set) {
+                if(FD_ISSET(i, except_set)) {
+                    poll_member.events |= POLLPRI;
+                }
+            }
+            if(poll_member.events != 0) {
+                poll_data.push(poll_member);
+            }
+        }
+
+        auto res = syscall(SYS_ppoll, poll_data.data(), poll_data.size(), timeout, sigmask);
+        if (int err = sc_error(res); err) {
+            return err;
+        }
+
+        if (res) {
+            *num_events = res;
+        }
+
+        if (read_set) {
+            FD_ZERO(read_set);
+        }
+        if(write_set) {
+            FD_ZERO(write_set);
+        }
+        if (except_set) {
+            FD_ZERO(except_set);
+        }
+
+        for (pollfd& item : poll_data) {
+            if (item.revents & POLLIN) {
+                FD_SET(item.fd, read_set);
+            }
+            if(item.revents & POLLOUT) {
+                FD_SET(item.fd, write_set);
+            }
+            if(item.revents & POLLPRI) {
+                FD_SET(item.fd, except_set);
+            }
+        }
+
         return 0;
     }
 }
