@@ -12,6 +12,7 @@
 #include <stdlib.h>
 
 #include <sys/ioctls.h>
+#include <sys/select.h>
 
 namespace mlibc {
     int sys_openat(int dirfd, const char *path, int flags, mode_t mode, int *fd) {
@@ -231,6 +232,8 @@ namespace mlibc {
         return 0;
     }
 
+    #ifndef MLIBC_BUILDING_RTLD
+
     int sys_pselect(int num_fds, fd_set *read_set, fd_set *write_set, fd_set *except_set, const struct timespec *timeout, const sigset_t *sigmask, int *num_events) {
         frg::vector<pollfd, MemoryAllocator> poll_data{getAllocator()};
         for (int i = 0; i < num_fds; i++) {
@@ -289,4 +292,6 @@ namespace mlibc {
 
         return 0;
     }
+
+    #endif
 }
