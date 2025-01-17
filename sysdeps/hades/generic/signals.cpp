@@ -53,7 +53,7 @@ namespace mlibc {
     int sys_kill(int pid, int sig) {
         if (sig == 0) return 0;
 
-        auto res = syscall(pid, sig);
+        auto res = syscall(SYS_kill, pid, sig);
         return sc_error(res);
     }
 }
