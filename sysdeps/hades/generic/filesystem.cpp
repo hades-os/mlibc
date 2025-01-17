@@ -1,3 +1,4 @@
+#include "mlibc/posix-sysdeps.hpp"
 #include <dirent.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -175,6 +176,10 @@ namespace mlibc {
             return err;
         }
 
+        return 0;
+    }
+
+    int sys_tcflow(int fd, int action) {
         return 0;
     }
 
