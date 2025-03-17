@@ -63,6 +63,17 @@ if not no_headers
 		'include/hades/syscall.h',
 		subdir: 'hades',
 	)
+
+
+    install_headers(
+        'include/asm/ioctl.h',
+		subdir: 'asm'
+	)
+ 
+    install_headers(
+        'include/sys/ioctls.h',
+        subdir: 'sys'
+    )
 endif
 
 if not headers_only
