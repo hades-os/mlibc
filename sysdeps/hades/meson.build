@@ -58,14 +58,14 @@ if not no_headers
         'include/abi-bits/vm-flags.h',
         'include/abi-bits/vt.h',
         'include/abi-bits/wait.h',
-        'include/abi-bits/xattr.h'
+        'include/abi-bits/xattr.h',
 		subdir: 'abi-bits',
         follow_symlinks: true
 	)
 
 	install_headers(
 		'include/hades/syscall.h',
-		subdir: 'hades',
+		subdir: 'hades'
 	)
 
 
