@@ -96,7 +96,7 @@ namespace mlibc {
     }
 
     int sys_seek(int fd, off_t offset, int whence, off_t *new_offset) {
-        auto res = syscall(SYS_seek, fd, offset, whence);
+        auto res = syscall(SYS_lseek, fd, offset, whence);
         if (int err = sc_error(res); err) {
             return err;
         }
