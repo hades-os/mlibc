@@ -52,6 +52,16 @@ namespace mlibc {
         return 0;
     }
 
+    int sys_pread(int fd, void *buf, size_t count, off_t offset, ssize_t *bytes_read) {
+        auto res = syscall(SYS_pread, fd, buf, count, offset);
+        if (int err = sc_error(res); err) {
+            return err;
+        }
+
+        *bytes_read = res;
+        return 0;
+    }
+
     int sys_write(int fd, const void *buf, size_t count, ssize_t *bytes_written) {
         auto res = syscall(SYS_write, fd, buf, count);
         if (int err = sc_error(res); err) {
@@ -62,12 +72,15 @@ namespace mlibc {
         return 0;
     }
 
-/*
-    int fd_number = r->rdi;
-    size_t req = r->rsi;
-    void *arg = (void *) r->rdx;
+    int sys_pwrite(int fd, const void *buf, size_t count, off_t offset, ssize_t *bytes_written) {
+        auto res = syscall(SYS_pwrite, fd, buf, count, offset);
+        if (int err = sc_error(res); err) {
+            return err;
+        }
 
-*/
+        *bytes_written = res;
+        return 0;
+    }
 
     int sys_ioctl(int fd, unsigned long request, void *arg, int *result) {
         auto res = syscall(SYS_ioctl, fd, request, arg);
